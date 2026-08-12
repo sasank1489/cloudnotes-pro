@@ -29,7 +29,7 @@ services:
       - NODE_ENV=production
       - PORT=5000
       - MONGO_URI=mongodb://mongodb:27017/cloudnotes
-      - JWT_SECRET=cloudnotes_pro_super_secure_jwt_secret_key_2026!
+      - JWT_SECRET=${JWT_SECRET}
       - JWT_EXPIRES_IN=7d
       - CORS_ORIGIN=http://localhost:3000
     depends_on:
