@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import { User } from '../types';
 import { authService } from '../services/authService';
 
@@ -26,6 +27,7 @@ const MOCK_DEMO_USER: User = {
 };
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const queryClient = useQueryClient();
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(() => localStorage.getItem('cloudnotes_token'));
   const [isDemo, setIsDemo] = useState<boolean>(() => sessionStorage.getItem('cloudnotes_demo_session') === 'true');
@@ -60,6 +62,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [token]);
 
   const login = (newToken: string, newUser: User) => {
+    queryClient.clear();
     sessionStorage.removeItem('cloudnotes_demo_session');
     sessionStorage.removeItem('cloudnotes_demo_notes');
     setIsDemo(false);
@@ -69,6 +72,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const startDemoSession = () => {
+    queryClient.clear();
     localStorage.removeItem('cloudnotes_token');
     sessionStorage.setItem('cloudnotes_demo_session', 'true');
     setIsDemo(true);
@@ -77,6 +81,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const logout = async () => {
+    queryClient.clear();
     if (!isDemo) {
       try {
         await authService.logout();

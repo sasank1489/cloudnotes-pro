@@ -184,7 +184,7 @@ export class NoteService {
       throw new AppError('You cannot share a note with yourself', 400);
     }
 
-    if (note.sharedWith.includes(targetUser._id)) {
+    if (note.sharedWith.some((id: any) => id.toString() === targetUser._id.toString())) {
       throw new AppError('Note is already shared with this user', 400);
     }
 

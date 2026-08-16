@@ -9,9 +9,11 @@ import { ShareModal } from '../components/ShareModal';
 import { ConfirmModal } from '../components/ConfirmModal';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { useDebounce } from '../hooks/useDebounce';
+import { useAuth } from '../context/AuthContext';
 
 export const DashboardPage: React.FC = () => {
   const queryClient = useQueryClient();
+  const { user } = useAuth();
 
   // Search & Filter state
   const [search, setSearch] = useState('');
@@ -29,7 +31,7 @@ export const DashboardPage: React.FC = () => {
 
   // Fetch Notes
   const { data: notesData, isLoading } = useQuery({
-    queryKey: ['notes', { search: debouncedSearch, category, tag: selectedTag, sort, isArchived: false }],
+    queryKey: ['notes', user?._id, { search: debouncedSearch, category, tag: selectedTag, sort, isArchived: false }],
     queryFn: () =>
       noteService.getNotes({
         search: debouncedSearch,
@@ -42,12 +44,12 @@ export const DashboardPage: React.FC = () => {
 
   // Fetch Categories & Tags
   const { data: categoriesData } = useQuery({
-    queryKey: ['categories'],
+    queryKey: ['categories', user?._id],
     queryFn: () => noteService.getCategories(),
   });
 
   const { data: tagsData } = useQuery({
-    queryKey: ['tags'],
+    queryKey: ['tags', user?._id],
     queryFn: () => noteService.getTags(),
   });
 

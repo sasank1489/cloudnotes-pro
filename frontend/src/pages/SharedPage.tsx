@@ -4,10 +4,12 @@ import { Users, UserCheck } from 'lucide-react';
 import { noteService } from '../services/noteService';
 import { NoteCard } from '../components/NoteCard';
 import { LoadingSpinner } from '../components/LoadingSpinner';
+import { useAuth } from '../context/AuthContext';
 
 export const SharedPage: React.FC = () => {
+  const { user } = useAuth();
   const { data: notesData, isLoading } = useQuery({
-    queryKey: ['sharedNotes'],
+    queryKey: ['sharedNotes', user?._id],
     queryFn: () => noteService.getSharedNotes(),
   });
 

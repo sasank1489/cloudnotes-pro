@@ -5,13 +5,15 @@ import { noteService } from '../services/noteService';
 import { NoteCard } from '../components/NoteCard';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { ConfirmModal } from '../components/ConfirmModal';
+import { useAuth } from '../context/AuthContext';
 
 export const ArchivePage: React.FC = () => {
   const queryClient = useQueryClient();
+  const { user } = useAuth();
   const [deletingNoteId, setDeletingNoteId] = useState<string | null>(null);
 
   const { data: notesData, isLoading } = useQuery({
-    queryKey: ['notes', { isArchived: true }],
+    queryKey: ['notes', user?._id, { isArchived: true }],
     queryFn: () => noteService.getNotes({ isArchived: true }),
   });
 

@@ -52,7 +52,7 @@ jobs:
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/cloudnotes-backend:latest
 
-      - name: build and push fronend image
+      - name: build and push frontend image
         uses: docker/build-push-action@v6
         with:
           context: ./frontend
