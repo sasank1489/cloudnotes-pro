@@ -61,3 +61,14 @@ temp/
 # MongoDB
 # ===========================
 data/
+
+# ===========================
+# Kubernetes
+# ===========================
+k8s/backend-secret.yaml
+
+# ===========================
+# Certificates
+# ===========================
+cloudnotes.crt
+cloudnotes.key

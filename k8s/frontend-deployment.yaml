@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: cloudnotes-frontend
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: cloudnotes-frontend
+
+  template:
+    metadata:
+      labels:
+        app: cloudnotes-frontend
+
+    spec:
+      containers:
+        - name: cloudnotes-frontend
+          image: ghcr.io/sasank1489/cloudnotes-frontend:latest
+
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
