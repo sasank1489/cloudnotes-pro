@@ -72,3 +72,9 @@ k8s/backend-secret.yaml
 # ===========================
 cloudnotes.crt
 cloudnotes.key
+# Terraform
+terraf/.terraform/
+terraf/*.tfstate
+terraf/*.tfstate.*
+
+desktop.ini
