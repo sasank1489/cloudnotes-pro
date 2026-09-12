@@ -369,20 +369,29 @@ Operational parameters are decoupled from container code:
 
 *Note: Visual verification artifacts are saved under `docs/screenshots/`.*
 
-### Application Home & Authentication
-![CloudNotes Application](docs/screenshots/cloudnotes-home.png)
+### Application Landing Page
+![CloudNotes Landing Page](docs/screenshots/cloudnotes-home.png)
 
-### Dashboard & Notes Interface
-![CloudNotes UI](docs/screenshots/cloudnotes-ui.png)
+### User Authentication & Login Interface
+![CloudNotes Login & Auth](docs/screenshots/cloudnotes-auth.png)
 
-### Kubernetes Cluster Pods & Services
-![Kubernetes Pods](docs/screenshots/kubernetes-pods.png)
+### Notes Workspace Dashboard
+![CloudNotes Dashboard Workspace](docs/screenshots/cloudnotes-dashboard.png)
+
+### Create Note Modal Dialog
+![CloudNotes Create Note Modal](docs/screenshots/cloudnotes-create-note.png)
+
+### Kubernetes Cluster Pods Status
+![Kubernetes Pods Status](docs/screenshots/kubernetes-pods.png)
 
 ### Horizontal Pod Autoscaler (HPA) Scaling Demonstration
-![Kubernetes HPA](docs/screenshots/kubernetes-hpa.png)
+![Kubernetes HPA Demonstration](docs/screenshots/kubernetes-hpa.png)
 
-### AWS EC2 & Terraform Provisioning
-![AWS Infrastructure](docs/screenshots/aws-terraform.png)
+### Kubernetes Ingress & Services Topology
+![Kubernetes Ingress & Services](docs/screenshots/kubernetes-services-ingress.png)
+
+### GitHub Actions CI/CD Pipeline
+![GitHub Actions CI/CD Pipeline](docs/screenshots/github-actions.png)
 
 ---
 
